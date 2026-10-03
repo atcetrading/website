@@ -1,0 +1,20 @@
+---
+import { defaultLang, localizedPath } from '../i18n/utils';
+
+// Static redirect from the site root to the default language (respects `base`).
+const target = localizedPath(defaultLang);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+    <title>ATCE</title>
+  </head>
+  <body>
+    <a href={target}>ATCE</a>
+  </body>
+</html>

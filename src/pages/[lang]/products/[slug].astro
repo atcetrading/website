@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ApprovalBadges from '../../../components/ApprovalBadges.astro';
+import { getIndustry } from '../../../data/industries';
+import { products } from '../../../data/products';
+import { languages, localizedPath, pick, useTranslations, type Lang } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return languages.flatMap((lang) => products.map((product) => ({ params: { lang, slug: product.slug }, props: { product } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const { product } = Astro.props;
+const t = useTranslations(lang);
+const productIndustries = product.industries.map(getIndustry).filter((i) => i !== undefined);
+---
+
+<BaseLayout
+  lang={lang}
+  title={pick(product.name, lang)}
+  description={pick(product.summary, lang)}
+  path={`/products/${product.slug}/`}
+>
+  <div class="mx-auto max-w-6xl px-4 pt-12">
+    <a href={localizedPath(lang, '/products/')} class="text-sm font-semibold text-brand-600 hover:underline"><span class="flip-rtl inline-block">←</span> {t('common.allProducts')}</a>
+    <h1 class="mt-3 text-3xl text-brand-800 sm:text-4xl">{pick(product.name, lang)}</h1>
+    <p class="mt-4 max-w-3xl text-lg text-brand-900/80">{pick(product.description, lang)}</p>
+
+    <div class="mt-10 grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="mb-3 text-xl text-brand-800">{t('common.features')}</h2>
+        <ul class="list-inside list-disc space-y-1 text-brand-900/90">
+          {pick(product.features, lang).map((f) => <li>{f}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="mb-3 text-xl text-brand-800">{t('common.usedIn')}</h2>
+        <ul class="flex flex-wrap gap-2">
+          {productIndustries.map((industry) => (
+            <li>
+              <a href={localizedPath(lang, `/industries/${industry.slug}/`)} class="rounded-full bg-brand-100 px-3 py-1 text-sm font-medium text-brand-800 hover:bg-brand-200">
+                {pick(industry.name, lang)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10"><ApprovalBadges lang={lang} /></div>
+    <a href={localizedPath(lang, '/contact/')} class="mt-8 inline-block rounded-lg bg-brand-600 px-5 py-3 font-semibold text-white hover:bg-brand-700">{t('common.requestQuote')}</a>
+  </div>
+</BaseLayout>

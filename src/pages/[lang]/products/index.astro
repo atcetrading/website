@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import { industries } from '../../../data/industries';
+import { products } from '../../../data/products';
+import { langPaths, localizedPath, pick, useTranslations, type Lang } from '../../../i18n/utils';
+
+export const getStaticPaths = langPaths;
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t('productsPage.title')} description={t('productsPage.description')} path="/products/">
+  <div class="mx-auto max-w-6xl px-4 pt-12">
+    <SectionHeading title={t('productsPage.title')} intro={t('productsPage.intro')} />
+
+    <div class="mb-8 flex flex-wrap items-center gap-2 text-sm">
+      <span class="font-medium text-brand-700">{t('common.filterByIndustry')}:</span>
+      {industries.map((industry) => (
+        <a href={localizedPath(lang, `/industries/${industry.slug}/`)} class="rounded-full border border-brand-200 bg-white px-3 py-1 text-brand-700 hover:bg-brand-50">
+          {pick(industry.name, lang)}
+        </a>
+      ))}
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {products.map((product) => <ProductCard product={product} lang={lang} />)}
+    </div>
+  </div>
+</BaseLayout>

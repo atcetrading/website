@@ -1,0 +1,91 @@
+{
+  "site": {
+    "name": "ATCE",
+    "short": "ATCE",
+    "legalName": "ATCE — Import & Export",
+    "tagline": "Trusted import, export and trading — starting with quality salt"
+  },
+  "nav": {
+    "home": "Home",
+    "industries": "Industries",
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact",
+    "otherLanguage": "العربية"
+  },
+  "common": {
+    "viewAll": "View all",
+    "viewDetails": "View details",
+    "usedIn": "Used in",
+    "productsFor": "Products for this industry",
+    "features": "Key features",
+    "requestQuote": "Request a quote",
+    "mainProduct": "Main product",
+    "salt": "Salt",
+    "allIndustries": "All industries",
+    "allProducts": "All products",
+    "filterByIndustry": "Filter by industry"
+  },
+  "approvals": {
+    "title": "Fully approved",
+    "health": "Health approvals",
+    "industry": "Industry approvals",
+    "export": "Export approvals",
+    "text": "All our salt grades come with the approvals of the competent authorities for health, industry and export."
+  },
+  "home": {
+    "title": "Home",
+    "description": "ATCE trades and exports food-grade, industrial, natural and vacuum salt for factories, with all required health, industry and export approvals.",
+    "heroTitle": "Salt for every industry, from a trusted source",
+    "heroText": "We represent leading factories specialised in producing and refining every type of salt — food-grade, industrial, natural or vacuum — and supply them to manufacturers who depend on quality.",
+    "ctaProducts": "Explore products",
+    "ctaContact": "Contact us",
+    "industriesTitle": "Industries we serve",
+    "industriesIntro": "Find your industry and see the products that fit it.",
+    "featuredTitle": "Featured products",
+    "featuredIntro": "Our salt range, from everyday food-grade to high-purity vacuum salt.",
+    "ctaBandTitle": "Need salt for your factory?",
+    "ctaBandText": "Tell us what you produce and we will recommend the right grade."
+  },
+  "industriesPage": {
+    "title": "Industries",
+    "description": "Industries served by ATCE and the products suited to each.",
+    "intro": "Different industries need different grades of salt. Choose yours to see the matching products."
+  },
+  "productsPage": {
+    "title": "Products",
+    "description": "Food-grade, industrial, natural and vacuum salt supplied by ATCE.",
+    "intro": "A full range of salt for food, pharmaceutical, textile and industrial use."
+  },
+  "about": {
+    "title": "About us",
+    "description": "About ATCE: an import, export and trading company with agencies for leading salt producers.",
+    "intro": "ATCE is an import, export and trading company. We hold agencies for factories and companies specialised in manufacturing and refining all types of salt.",
+    "agenciesTitle": "Our agencies",
+    "agenciesText": "We work directly with producers of food-grade and industrial salt, mountain and natural salt, fine refined and iodized salt, and coarse non-iodized salt, as well as vacuum salt tablets.",
+    "valuesTitle": "What sets us apart",
+    "values": [
+      "Direct agencies with leading factories",
+      "Grades for food, pharmaceutical, textile and industrial use",
+      "All health, industry and export approvals in place"
+    ]
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "Contact ATCE for quotes and technical advice on salt for your industry.",
+    "intro": "Send us your requirements and we will get back to you.",
+    "name": "Your name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send message",
+    "detailsTitle": "Our details",
+    "address": "Address",
+    "addressValue": "Cairo, Egypt",
+    "formNote": "Demo form — not connected yet."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,48 @@
+---
+import { languages, localizedPath, useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const otherLang = languages.find((l) => l !== lang)!;
+
+const links = [
+  { href: '/', label: t('nav.home') },
+  { href: '/industries/', label: t('nav.industries') },
+  { href: '/products/', label: t('nav.products') },
+  { href: '/about/', label: t('nav.about') },
+  { href: '/contact/', label: t('nav.contact') },
+];
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class="border-b border-sand-200 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+    <a href={localizedPath(lang)} class="flex items-center gap-2 text-brand-700">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-600 text-sm font-bold text-white">{t('site.short')}</span>
+      <span class="font-bold">{t('site.name')}</span>
+    </a>
+    <nav class="flex flex-wrap items-center gap-1 text-sm">
+      {links.map((l) => (
+        <a
+          href={localizedPath(lang, l.href)}
+          class:list={['rounded-md px-3 py-2 hover:bg-brand-50', isActive(l.href) ? 'bg-brand-100 font-semibold text-brand-800' : 'text-brand-900']}
+        >
+          {l.label}
+        </a>
+      ))}
+      <a
+        href={localizedPath(otherLang, path)}
+        hreflang={otherLang}
+        lang={otherLang}
+        class="ms-2 rounded-md border border-brand-200 px-3 py-2 font-medium text-brand-700 hover:bg-brand-50"
+      >
+        {t('nav.otherLanguage')}
+      </a>
+    </nav>
+  </div>
+</header>

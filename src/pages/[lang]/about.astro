@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ApprovalBadges from '../../components/ApprovalBadges.astro';
+import { langPaths, useTranslations, type Lang } from '../../i18n/utils';
+
+export const getStaticPaths = langPaths;
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const values = t<string[]>('about.values');
+---
+
+<BaseLayout lang={lang} title={t('about.title')} description={t('about.description')} path="/about/">
+  <div class="mx-auto max-w-4xl px-4 pt-12">
+    <h1 class="text-3xl text-brand-800 sm:text-4xl">{t('about.title')}</h1>
+    <p class="mt-4 text-lg text-brand-900/80">{t('about.intro')}</p>
+
+    <h2 class="mt-10 mb-3 text-2xl text-brand-800">{t('about.agenciesTitle')}</h2>
+    <p class="text-brand-900/80">{t('about.agenciesText')}</p>
+
+    <h2 class="mt-10 mb-3 text-2xl text-brand-800">{t('about.valuesTitle')}</h2>
+    <ul class="list-inside list-disc space-y-1 text-brand-900/90">
+      {values.map((v) => <li>{v}</li>)}
+    </ul>
+
+    <h2 class="mt-10 mb-3 text-2xl text-brand-800">{t('approvals.title')}</h2>
+    <p class="mb-4 text-brand-900/80">{t('approvals.text')}</p>
+    <ApprovalBadges lang={lang} />
+  </div>
+</BaseLayout>

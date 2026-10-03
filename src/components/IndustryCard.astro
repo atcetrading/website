@@ -1,0 +1,21 @@
+---
+import type { Industry } from '../data/industries';
+import { localizedPath, pick, useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  industry: Industry;
+  lang: Lang;
+}
+
+const { industry, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<a
+  href={localizedPath(lang, `/industries/${industry.slug}/`)}
+  class="group flex flex-col rounded-xl border border-sand-200 bg-brand-50 p-5 transition hover:border-brand-500 hover:shadow-md"
+>
+  <h3 class="text-lg text-brand-800">{pick(industry.name, lang)}</h3>
+  <p class="mt-2 flex-1 text-sm text-brand-900/80">{pick(industry.summary, lang)}</p>
+  <span class="mt-4 text-sm font-semibold text-brand-600 group-hover:underline">{t('common.viewDetails')} <span class="flip-rtl inline-block">→</span></span>
+</a>

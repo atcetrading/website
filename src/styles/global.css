@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", "Cairo", system-ui, sans-serif;
+
+  /* Earthy green — "الأرض الطيبة" (the good land) */
+  --color-brand-50: #f1f7f2;
+  --color-brand-100: #dcebdf;
+  --color-brand-200: #b9d7c0;
+  --color-brand-500: #3f8a52;
+  --color-brand-600: #2f6f40;
+  --color-brand-700: #265a34;
+  --color-brand-800: #1f472a;
+  --color-brand-900: #163320;
+
+  /* Warm sand neutrals */
+  --color-sand-50: #fbf9f4;
+  --color-sand-100: #f4efe3;
+  --color-sand-200: #e6dcc6;
+
+  /* Accent for calls to action */
+  --color-accent-500: #d79a24;
+  --color-accent-600: #b9801a;
+}
+
+html[dir="rtl"] body {
+  font-family: "Cairo", "Inter Variable", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-sand-50 text-brand-900 antialiased;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-bold tracking-tight;
+}
+
+/* Mirror directional icons (arrows) in RTL */
+html[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
